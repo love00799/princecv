@@ -1,6 +1,8 @@
 
-import Sidebar from "../components/Sidebar";
-import HeroSection from "../components/HeroSection";
+import { useRef, useState } from "react";
+import SocialIcons from "../components/SocialIcons";
+import { ChevronUp, ChevronDown } from "lucide-react";
+import BackgroundAudio from "../components/BackgroundAudio";
 
 const skills = [
   "C++", "C", "Java", "Python", "HTML", "SQL", 
@@ -21,88 +23,283 @@ const certifications = [
 ];
 
 export default function Resume() {
+  const mainRef = useRef<HTMLDivElement>(null);
+  const [currentSection, setCurrentSection] = useState(0);
+  
+  const sections = [
+    { id: "profile", label: "Profile" },
+    { id: "skills", label: "Skills" },
+    { id: "education", label: "Education" },
+    { id: "projects", label: "Projects" },
+    { id: "internships", label: "Internships" },
+    { id: "certifications", label: "Certifications" },
+    { id: "contact", label: "Contact" }
+  ];
+  
+  const scrollToNextSection = () => {
+    if (currentSection < sections.length - 1) {
+      const nextSection = document.getElementById(sections[currentSection + 1].id);
+      nextSection?.scrollIntoView({ behavior: "smooth" });
+      setCurrentSection(currentSection + 1);
+    }
+  };
+  
+  const scrollToPrevSection = () => {
+    if (currentSection > 0) {
+      const prevSection = document.getElementById(sections[currentSection - 1].id);
+      prevSection?.scrollIntoView({ behavior: "smooth" });
+      setCurrentSection(currentSection - 1);
+    }
+  };
+
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-gradient-to-br from-shortsYellow via-shortsAccent/30 to-white font-montserrat">
-      <div className="md:w-1/4">
-        <Sidebar />
+    <div className="h-screen flex flex-col overflow-hidden bg-shortsDark">
+      {/* Audio controls */}
+      <div className="absolute top-4 right-4 z-50">
+        <BackgroundAudio />
       </div>
-      <main className="flex-1 px-1 md:px-6 pt-2 md:pt-8 pb-8 flex flex-col gap-10 animate-fade-in">
-        <div className="max-w-3xl mx-auto w-full">
-          <HeroSection />
-        </div>
-        <section id="skills" className="max-w-2xl mx-auto bg-shortsWhite/90 rounded-3xl py-8 px-8 shadow flex flex-col gap-4 border-2 border-shortsAccent/20 animate-fade-in">
-          <h3 className="text-2xl font-extrabold font-montserrat text-shortsRed mb-3 tracking-tight">Skills</h3>
-          <div className="flex flex-wrap gap-3 justify-center">
+      
+      {/* Main content area - vertical shorts-style scroll */}
+      <main 
+        ref={mainRef}
+        className="flex-1 snap-y snap-mandatory overflow-y-auto overflow-x-hidden relative"
+        onScroll={(e) => {
+          const scrollTop = e.currentTarget.scrollTop;
+          const sectionHeight = window.innerHeight;
+          const newSection = Math.floor(scrollTop / sectionHeight);
+          if (newSection !== currentSection) {
+            setCurrentSection(newSection);
+          }
+        }}
+      >
+        {/* Profile Section */}
+        <section id="profile" className="h-screen w-full flex flex-col items-center justify-center snap-start relative bg-gradient-to-b from-shortsRed via-shortsYellow to-shortsAccent p-4">
+          <div className="absolute inset-0 bg-shortsRed opacity-10 z-0"></div>
+          <div className="max-w-sm w-full flex flex-col items-center z-10">
+            <img
+              src="/lovable-uploads/365c6999-af97-4e00-a7c4-c9eb8aa2cc4d.png"
+              alt="Profile"
+              className="w-28 h-28 rounded-full object-cover border-4 border-shortsWhite shadow-xl"
+            />
+            <h1 className="text-4xl font-extrabold font-montserrat text-shortsWhite mt-4 drop-shadow-md">
+              Prince Kumar
+            </h1>
+            <p className="text-lg font-semibold font-montserrat text-shortsWhite/90 mb-4">
+              Visual journey • Engineering
+            </p>
+            <div className="flex justify-center mt-2">
+              <SocialIcons />
+            </div>
+          </div>
+          
+          <div className="absolute bottom-10 left-0 right-0 flex justify-center">
+            <button 
+              onClick={scrollToNextSection}
+              className="bg-shortsWhite/20 p-2 rounded-full animate-bounce"
+            >
+              <ChevronDown className="text-shortsWhite" />
+            </button>
+          </div>
+        </section>
+
+        {/* Skills Section */}
+        <section id="skills" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6 bg-gradient-to-br from-shortsPurple to-shortsRed">
+          <h2 className="text-3xl font-extrabold font-montserrat text-shortsWhite mb-10">Skills</h2>
+          <div className="flex flex-wrap justify-center gap-4 max-w-xs">
             {skills.map((skill) => (
               <span
                 key={skill}
-                className="bg-shortsYellow/70 text-shortsDark px-4 py-2 rounded-full text-sm font-semibold shadow-sm hover-scale font-montserrat border-2 border-shortsRed/20"
+                className="bg-shortsWhite/20 backdrop-blur-sm text-shortsWhite px-4 py-2 rounded-full text-sm font-semibold hover:bg-shortsWhite/30 transition-colors duration-200 border border-shortsWhite/30"
               >
                 {skill}
               </span>
             ))}
           </div>
+          
+          <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-8">
+            <button 
+              onClick={scrollToPrevSection}
+              className="bg-shortsWhite/20 p-2 rounded-full"
+            >
+              <ChevronUp className="text-shortsWhite" />
+            </button>
+            <button 
+              onClick={scrollToNextSection}
+              className="bg-shortsWhite/20 p-2 rounded-full animate-bounce"
+            >
+              <ChevronDown className="text-shortsWhite" />
+            </button>
+          </div>
         </section>
 
-        <section id="education" className="max-w-2xl mx-auto bg-shortsWhite/95 rounded-3xl py-8 px-8 shadow flex flex-col gap-2 border-2 border-shortsAccent/20 animate-fade-in">
-          <h3 className="text-2xl font-extrabold font-montserrat text-shortsPurple mb-3 tracking-tight">Education</h3>
-          <ul className="list-disc list-inside space-y-2 font-montserrat text-shortsDark/90">
-            <li>
-              <strong>B-Tech (Computer Science & System Engineering)</strong>, KIIT, Odisha (2020-2024) – 81.6%
-            </li>
-            <li>
-              <strong>12th Board</strong>, M.R. Janta College, Bihar Board (2018-2020) – 62.8%
-            </li>
-            <li>
-              <strong>10th Board</strong>, DAV Public School, CBSE (2015-2018) – 46.8%
-            </li>
-          </ul>
+        {/* Education Section */}
+        <section id="education" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6 bg-gradient-to-br from-shortsAccent to-shortsPurple">
+          <h2 className="text-3xl font-extrabold font-montserrat text-shortsWhite mb-8">Education</h2>
+          <div className="max-w-xs space-y-6">
+            <div className="bg-shortsWhite/10 backdrop-blur-sm p-4 rounded-xl border border-shortsWhite/30">
+              <h3 className="text-xl font-bold text-shortsWhite">B-Tech (CS & System Engineering)</h3>
+              <p className="text-shortsWhite/80">KIIT, Odisha (2020-2024)</p>
+              <p className="text-shortsWhite font-semibold">81.6%</p>
+            </div>
+            <div className="bg-shortsWhite/10 backdrop-blur-sm p-4 rounded-xl border border-shortsWhite/30">
+              <h3 className="text-xl font-bold text-shortsWhite">12th Board</h3>
+              <p className="text-shortsWhite/80">M.R. Janta College, Bihar Board (2018-2020)</p>
+              <p className="text-shortsWhite font-semibold">62.8%</p>
+            </div>
+            <div className="bg-shortsWhite/10 backdrop-blur-sm p-4 rounded-xl border border-shortsWhite/30">
+              <h3 className="text-xl font-bold text-shortsWhite">10th Board</h3>
+              <p className="text-shortsWhite/80">DAV Public School, CBSE (2015-2018)</p>
+              <p className="text-shortsWhite font-semibold">46.8%</p>
+            </div>
+          </div>
+          
+          <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-8">
+            <button 
+              onClick={scrollToPrevSection}
+              className="bg-shortsWhite/20 p-2 rounded-full"
+            >
+              <ChevronUp className="text-shortsWhite" />
+            </button>
+            <button 
+              onClick={scrollToNextSection}
+              className="bg-shortsWhite/20 p-2 rounded-full animate-bounce"
+            >
+              <ChevronDown className="text-shortsWhite" />
+            </button>
+          </div>
         </section>
 
-        <section id="projects" className="max-w-2xl mx-auto bg-shortsWhite/95 rounded-3xl py-8 px-8 shadow flex flex-col gap-2 border-2 border-shortsRed/20 animate-fade-in">
-          <h3 className="text-2xl font-extrabold font-montserrat text-shortsRed mb-3 tracking-tight">Projects</h3>
-          <ul className="list-disc list-inside space-y-2 font-montserrat text-shortsDark/90">
-            <li>
-              <strong>Sentiment Analysis on Twitter Data</strong> – NLP project analyzing opinions from tweets
-            </li>
-            <li>
-              <strong>Bangalore House Price Prediction</strong> – ML regression model
-            </li>
-          </ul>
+        {/* Projects Section */}
+        <section id="projects" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6 bg-gradient-to-br from-shortsYellow to-shortsRed">
+          <h2 className="text-3xl font-extrabold font-montserrat text-shortsDark mb-8">Projects</h2>
+          <div className="max-w-xs space-y-6">
+            <div className="bg-shortsDark/10 backdrop-blur-sm p-4 rounded-xl border border-shortsDark/30">
+              <h3 className="text-xl font-bold text-shortsDark">Sentiment Analysis on Twitter Data</h3>
+              <p className="text-shortsDark/80">NLP project analyzing opinions from tweets</p>
+            </div>
+            <div className="bg-shortsDark/10 backdrop-blur-sm p-4 rounded-xl border border-shortsDark/30">
+              <h3 className="text-xl font-bold text-shortsDark">Bangalore House Price Prediction</h3>
+              <p className="text-shortsDark/80">ML regression model</p>
+            </div>
+          </div>
+          
+          <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-8">
+            <button 
+              onClick={scrollToPrevSection}
+              className="bg-shortsDark/20 p-2 rounded-full"
+            >
+              <ChevronUp className="text-shortsDark" />
+            </button>
+            <button 
+              onClick={scrollToNextSection}
+              className="bg-shortsDark/20 p-2 rounded-full animate-bounce"
+            >
+              <ChevronDown className="text-shortsDark" />
+            </button>
+          </div>
         </section>
 
-        <section id="internships" className="max-w-2xl mx-auto bg-shortsWhite/95 rounded-3xl py-8 px-8 shadow flex flex-col gap-2 border-2 border-shortsAccent/20 animate-fade-in">
-          <h3 className="text-2xl font-extrabold font-montserrat text-shortsAccent mb-3 tracking-tight">Internships</h3>
-          <ul className="list-disc list-inside space-y-2 font-montserrat text-shortsDark/90">
-            <li>Marketing & Tech Support Intern – Semika Technology (May–June 2023)</li>
-            <li>Sales & Marketing – Highradius (Aug–Sept 2023)</li>
-          </ul>
+        {/* Internships Section */}
+        <section id="internships" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6 bg-gradient-to-br from-shortsAccent to-shortsYellow">
+          <h2 className="text-3xl font-extrabold font-montserrat text-shortsDark mb-8">Internships</h2>
+          <div className="max-w-xs space-y-6">
+            <div className="bg-shortsDark/10 backdrop-blur-sm p-4 rounded-xl border border-shortsDark/30">
+              <h3 className="text-xl font-bold text-shortsDark">Marketing & Tech Support Intern</h3>
+              <p className="text-shortsDark/80">Semika Technology (May–June 2023)</p>
+            </div>
+            <div className="bg-shortsDark/10 backdrop-blur-sm p-4 rounded-xl border border-shortsDark/30">
+              <h3 className="text-xl font-bold text-shortsDark">Sales & Marketing</h3>
+              <p className="text-shortsDark/80">Highradius (Aug–Sept 2023)</p>
+            </div>
+          </div>
+          
+          <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-8">
+            <button 
+              onClick={scrollToPrevSection}
+              className="bg-shortsDark/20 p-2 rounded-full"
+            >
+              <ChevronUp className="text-shortsDark" />
+            </button>
+            <button 
+              onClick={scrollToNextSection}
+              className="bg-shortsDark/20 p-2 rounded-full animate-bounce"
+            >
+              <ChevronDown className="text-shortsDark" />
+            </button>
+          </div>
         </section>
 
-        <section id="certifications" className="max-w-2xl mx-auto bg-shortsWhite/90 rounded-3xl py-8 px-8 shadow flex flex-col gap-2 border-2 border-shortsPurple/20 animate-fade-in">
-          <h3 className="text-2xl font-extrabold font-montserrat text-shortsPurple mb-3 tracking-tight">Certifications</h3>
-          <ul className="list-disc list-inside space-y-2 font-montserrat text-shortsDark/90">
-            {certifications.map((cert) => (
-              <li key={cert}>{cert}</li>
+        {/* Certifications Section */}
+        <section id="certifications" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6 bg-gradient-to-br from-shortsPurple to-shortsAccent">
+          <h2 className="text-3xl font-extrabold font-montserrat text-shortsWhite mb-8">Certifications</h2>
+          <div className="max-w-xs max-h-[60vh] overflow-y-auto px-2 space-y-4">
+            {certifications.map((cert, index) => (
+              <div 
+                key={index} 
+                className="bg-shortsWhite/10 backdrop-blur-sm p-3 rounded-xl border border-shortsWhite/30"
+              >
+                <p className="text-shortsWhite font-medium">{cert}</p>
+              </div>
             ))}
-          </ul>
+          </div>
+          
+          <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-8">
+            <button 
+              onClick={scrollToPrevSection}
+              className="bg-shortsWhite/20 p-2 rounded-full"
+            >
+              <ChevronUp className="text-shortsWhite" />
+            </button>
+            <button 
+              onClick={scrollToNextSection}
+              className="bg-shortsWhite/20 p-2 rounded-full animate-bounce"
+            >
+              <ChevronDown className="text-shortsWhite" />
+            </button>
+          </div>
         </section>
 
-        <section className="max-w-2xl mx-auto bg-shortsWhite/90 rounded-3xl py-8 px-8 shadow flex flex-col gap-2 border-2 border-shortsRed/10 animate-fade-in">
-          <h3 className="text-2xl font-extrabold font-montserrat text-shortsRed mb-3 tracking-tight">Languages</h3>
-          <p className="text-shortsDark font-montserrat">English, Hindi</p>
-        </section>
-
-        <section id="lets-connect" className="max-w-2xl mx-auto bg-shortsAccent rounded-3xl py-10 px-8 shadow-lg flex flex-col items-center gap-4 mt-6 border-4 border-shortsRed/40 animate-scale-in">
-          <h3 className="text-3xl font-extrabold font-montserrat text-shortsDark drop-shadow tracking-tight uppercase">Let's Connect!</h3>
-          <p className="text-lg font-semibold text-shortsDark mb-2 text-center font-montserrat">Ready to collaborate or have questions? Reach out using social links or drop me an email!</p>
-          <a href="mailto:ps1750322@gmail.com"
-            className="bg-shortsRed hover:bg-shortsRed/80 transition text-shortsWhite px-8 py-3 rounded-2xl font-bold uppercase font-montserrat text-lg tracking-widest shadow"
+        {/* Contact Section */}
+        <section id="contact" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6 bg-gradient-to-b from-shortsRed to-shortsDark">
+          <h2 className="text-3xl font-extrabold font-montserrat text-shortsWhite mb-8">Let's Connect!</h2>
+          <p className="text-shortsWhite/90 text-center max-w-xs mb-8">
+            Ready to collaborate or have questions? Reach out using social links or drop me an email!
+          </p>
+          <a 
+            href="mailto:ps1750322@gmail.com"
+            className="bg-shortsAccent text-shortsDark px-8 py-3 rounded-full font-bold uppercase font-montserrat text-lg tracking-widest shadow-lg hover:bg-shortsAccent/80 transition-all duration-300"
           >
-            Say Hello!
+            Contact Me
           </a>
+          <div className="mt-8">
+            <SocialIcons />
+          </div>
+          
+          <div className="absolute bottom-10 left-0 right-0 flex justify-center">
+            <button 
+              onClick={scrollToPrevSection}
+              className="bg-shortsWhite/20 p-2 rounded-full"
+            >
+              <ChevronUp className="text-shortsWhite" />
+            </button>
+          </div>
         </section>
       </main>
+      
+      {/* Progress indicator */}
+      <div className="fixed right-4 top-1/2 transform -translate-y-1/2 flex flex-col gap-2">
+        {sections.map((section, index) => (
+          <div 
+            key={index}
+            className={`w-2 h-2 rounded-full ${currentSection === index ? 'bg-shortsWhite' : 'bg-shortsWhite/30'}`}
+            onClick={() => {
+              const targetSection = document.getElementById(section.id);
+              targetSection?.scrollIntoView({ behavior: "smooth" });
+              setCurrentSection(index);
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 }

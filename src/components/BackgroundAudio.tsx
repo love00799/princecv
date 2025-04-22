@@ -26,17 +26,17 @@ export default function BackgroundAudio() {
   };
 
   return (
-    <div className="inline-flex items-center bg-white/90 rounded-full px-4 py-1 shadow border border-shortsAccent/40">
+    <div className="inline-flex items-center bg-shortsDark/40 backdrop-blur-md rounded-full px-3 py-1.5 shadow border border-shortsWhite/20">
       <button
         aria-label={playing ? "Pause background music" : "Play background music"}
-        className="p-2 rounded-full text-shortsRed hover:text-shortsPurple transition"
+        className="p-1.5 rounded-full text-shortsWhite hover:text-shortsAccent transition"
         onClick={toggle}
         type="button"
       >
-        {playing ? <Volume2 size={20} /> : <Volume size={20} />}
+        {playing ? <Volume2 size={18} /> : <Volume size={18} />}
       </button>
-      <span className="ml-2 text-shortsDark font-semibold font-montserrat text-sm">
-        {playing ? "Background Music Playing" : "Background Music Off"}
+      <span className="ml-2 text-shortsWhite font-semibold font-montserrat text-xs">
+        {playing ? "Sound On" : "Sound Off"}
       </span>
       <audio ref={audioRef} src={AUDIO_SRC} loop preload="auto" />
     </div>
