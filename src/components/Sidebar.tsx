@@ -14,7 +14,7 @@ export default function Sidebar() {
     <aside className="flex flex-col items-center py-10 px-6 bg-[#E5DEFF] min-h-screen w-full max-w-[270px] shadow-lg">
       <div className="flex flex-col items-center">
         <img
-          src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=facearea&w=200&h=200&facepad=3&q=80"
+          src="/lovable-uploads/365c6999-af97-4e00-a7c4-c9eb8aa2cc4d.png"
           alt="Profile"
           className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-md"
         />
@@ -36,3 +36,4 @@ export default function Sidebar() {
     </aside>
   );
 }
+
