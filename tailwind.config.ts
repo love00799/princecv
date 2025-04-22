@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,7 +19,17 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				montserrat: ['Montserrat', 'Arial', 'sans-serif'],
+			},
 			colors: {
+				// add more vivid options for "shorts" feeling
+				shortsRed: '#FF004F',
+				shortsYellow: '#FFE600',
+        shortsDark: '#231F20',
+        shortsAccent: '#00F2EA',
+        shortsWhite: '#FFF',
+        shortsPurple: '#9B5DE5',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -84,11 +95,17 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				// hero
+        'hero-in': {
+          from: { opacity: '0', transform: 'scale(0.92) translateY(20px)' },
+          to: { opacity: '1', transform: 'scale(1) translateY(0)' }
+        }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+        'hero-in': 'hero-in 0.7s cubic-bezier(.4,2,.7,1.1)'
 			}
 		}
 	},
