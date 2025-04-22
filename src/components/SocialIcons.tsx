@@ -1,21 +1,21 @@
 
-import { Linkedin, Github, Mail } from "lucide-react";
+import { Linkedin, Mail, Phone } from "lucide-react";
 
 const socials = [
   {
     name: "LinkedIn",
     icon: Linkedin,
-    url: "https://www.linkedin.com/in/your-profile/",
-  },
-  {
-    name: "GitHub",
-    icon: Github,
-    url: "https://github.com/your-username",
+    url: "https://www.linkedin.com/in/prince-kumar-5b3813202",
   },
   {
     name: "Email",
     icon: Mail,
-    url: "mailto:youremail@example.com",
+    url: "mailto:ps1750322@gmail.com",
+  },
+  {
+    name: "Phone",
+    icon: Phone,
+    url: "tel:+919504585029",
   },
 ];
 
