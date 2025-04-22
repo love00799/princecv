@@ -52,7 +52,7 @@ export default function Resume() {
   };
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden bg-shortsDark">
+    <div className="h-screen flex flex-col overflow-hidden bg-shortsNeutral-900">
       {/* Audio controls */}
       <div className="absolute top-4 right-4 z-50">
         <BackgroundAudio />
@@ -72,21 +72,24 @@ export default function Resume() {
         }}
       >
         {/* Profile Section */}
-        <section id="profile" className="h-screen w-full flex flex-col items-center justify-center snap-start relative bg-gradient-to-b from-shortsRed via-shortsYellow to-shortsAccent p-4">
-          <div className="absolute inset-0 bg-shortsRed opacity-10 z-0"></div>
+        <section 
+          id="profile" 
+          className="h-screen w-full flex flex-col items-center justify-center snap-start relative bg-gradient-to-br from-shortsNeutral-800 via-shortsNeutral-900 to-shortsBlue-900 p-4"
+        >
+          <div className="absolute inset-0 bg-shortsNeutral-800 opacity-10 z-0"></div>
           <div className="max-w-sm w-full flex flex-col items-center z-10">
             <img
               src="/lovable-uploads/365c6999-af97-4e00-a7c4-c9eb8aa2cc4d.png"
               alt="Profile"
-              className="w-28 h-28 rounded-full object-cover border-4 border-shortsWhite shadow-xl"
+              className="w-28 h-28 rounded-full object-cover border-4 border-shortsNeutral-300 shadow-xl"
             />
             <h1 className="text-4xl font-extrabold font-montserrat text-shortsWhite mt-4 drop-shadow-md">
               Prince Kumar
             </h1>
-            <p className="text-lg font-semibold font-montserrat text-shortsWhite/90 mb-2">
+            <p className="text-lg font-semibold font-montserrat text-shortsNeutral-300 mb-2">
               Empowering Ideas with Code
             </p>
-            <p className="text-sm text-shortsWhite/90 mb-4 text-center">
+            <p className="text-sm text-shortsNeutral-200 mb-4 text-center">
               I&apos;m Prince Kumar, an ambitious software engineer passionate about turning ideas into digital realities. With expertise in programming, data, and creative problem-solving, I&apos;m eager to contribute and grow in the tech world.
             </p>
             <div className="flex justify-center mt-2">
@@ -96,21 +99,24 @@ export default function Resume() {
           <div className="absolute bottom-10 left-0 right-0 flex justify-center">
             <button 
               onClick={scrollToNextSection}
-              className="bg-shortsWhite/20 p-2 rounded-full animate-bounce"
+              className="bg-shortsNeutral-700/30 hover:bg-shortsNeutral-700/50 p-2 rounded-full animate-bounce"
             >
-              <ChevronDown className="text-shortsWhite" />
+              <ChevronDown className="text-shortsNeutral-300" />
             </button>
           </div>
         </section>
 
         {/* Skills Section */}
-        <section id="skills" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6 bg-gradient-to-br from-shortsPurple to-shortsRed">
+        <section 
+          id="skills" 
+          className="h-screen w-full flex flex-col items-center justify-center snap-start p-6 bg-gradient-to-br from-shortsBlue-900 to-shortsNeutral-800"
+        >
           <h2 className="text-3xl font-extrabold font-montserrat text-shortsWhite mb-10">Skills</h2>
           <div className="flex flex-wrap justify-center gap-4 max-w-xs">
             {skills.map((skill) => (
               <span
                 key={skill}
-                className="bg-shortsWhite/20 backdrop-blur-sm text-shortsWhite px-4 py-2 rounded-full text-sm font-semibold hover:bg-shortsWhite/30 transition-colors duration-200 border border-shortsWhite/30"
+                className="bg-shortsNeutral-700/30 text-shortsNeutral-200 px-4 py-2 rounded-full text-sm font-semibold hover:bg-shortsNeutral-700/50 transition-colors duration-200 border border-shortsNeutral-700/30"
               >
                 {skill}
               </span>
@@ -120,15 +126,15 @@ export default function Resume() {
           <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-8">
             <button 
               onClick={scrollToPrevSection}
-              className="bg-shortsWhite/20 p-2 rounded-full"
+              className="bg-shortsNeutral-700/30 p-2 rounded-full"
             >
-              <ChevronUp className="text-shortsWhite" />
+              <ChevronUp className="text-shortsNeutral-300" />
             </button>
             <button 
               onClick={scrollToNextSection}
-              className="bg-shortsWhite/20 p-2 rounded-full animate-bounce"
+              className="bg-shortsNeutral-700/30 p-2 rounded-full animate-bounce"
             >
-              <ChevronDown className="text-shortsWhite" />
+              <ChevronDown className="text-shortsNeutral-300" />
             </button>
           </div>
         </section>
@@ -292,7 +298,7 @@ export default function Resume() {
         {sections.map((section, index) => (
           <div 
             key={index}
-            className={`w-2 h-2 rounded-full ${currentSection === index ? 'bg-shortsWhite' : 'bg-shortsWhite/30'}`}
+            className={`w-2 h-2 rounded-full ${currentSection === index ? 'bg-shortsWhite' : 'bg-shortsNeutral-700'}`}
             onClick={() => {
               const targetSection = document.getElementById(section.id);
               targetSection?.scrollIntoView({ behavior: "smooth" });
