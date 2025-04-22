@@ -1,4 +1,3 @@
-
 import { useRef, useState } from "react";
 import SocialIcons from "../components/SocialIcons";
 import { ChevronUp, ChevronDown } from "lucide-react";
@@ -84,14 +83,16 @@ export default function Resume() {
             <h1 className="text-4xl font-extrabold font-montserrat text-shortsWhite mt-4 drop-shadow-md">
               Prince Kumar
             </h1>
-            <p className="text-lg font-semibold font-montserrat text-shortsWhite/90 mb-4">
-              Visual journey • Engineering
+            <p className="text-lg font-semibold font-montserrat text-shortsWhite/90 mb-2">
+              Empowering Ideas with Code
+            </p>
+            <p className="text-sm text-shortsWhite/90 mb-4 text-center">
+              I&apos;m Prince Kumar, an ambitious software engineer passionate about turning ideas into digital realities. With expertise in programming, data, and creative problem-solving, I&apos;m eager to contribute and grow in the tech world.
             </p>
             <div className="flex justify-center mt-2">
               <SocialIcons />
             </div>
           </div>
-          
           <div className="absolute bottom-10 left-0 right-0 flex justify-center">
             <button 
               onClick={scrollToNextSection}
