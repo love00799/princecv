@@ -19,7 +19,6 @@ export default function Sidebar() {
           className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-md"
         />
         <h1 className="mt-6 text-2xl font-bold text-gray-800">Prince Kumar</h1>
-        <p className="text-violet-600 font-medium text-sm">Computer Science Student</p>
         <p className="text-gray-600 text-sm">Muzaffarpur, INDIA</p>
         <SocialIcons />
       </div>
