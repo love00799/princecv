@@ -12,6 +12,7 @@ export default function Section3DEffect({
 }: Section3DEffectProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState("");
+  const [glowing, setGlowing] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = containerRef.current?.getBoundingClientRect();
@@ -24,21 +25,34 @@ export default function Section3DEffect({
     const max = 16;
     const rotateY = ((x - centerX) / centerX) * max;
     const rotateX = ((centerY - y) / centerY) * max;
-    setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.025)`);
+    
+    setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`);
+    setGlowing(true);
   };
 
-  const handleMouseLeave = () => setTransform("");
+  const handleMouseLeave = () => {
+    setTransform("");
+    setGlowing(false);
+  };
 
   return (
     <div
       ref={containerRef}
-      className={`transition-all duration-300 will-change-transform ${className}`}
+      className={`transition-all duration-300 will-change-transform relative ${className}`}
       style={{
         transform,
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
+      {/* Add subtle border glow effect when hovered */}
+      <div 
+        className={`absolute inset-0 rounded-xl transition-opacity duration-300 pointer-events-none ${glowing ? 'opacity-100' : 'opacity-0'}`}
+        style={{
+          boxShadow: "0 0 25px 5px rgba(255,255,255,0.2)",
+          zIndex: -1
+        }}
+      />
       {children}
     </div>
   );
