@@ -1,4 +1,3 @@
-
 import { useRef, useState } from "react";
 import SocialIcons from "../components/SocialIcons";
 import { ChevronUp, ChevronDown } from "lucide-react";
@@ -110,20 +109,20 @@ export default function Resume() {
           </div>
         </section>
 
-        {/* Skills Section */}
+        {/* Skills Section - Soft Neutral Gray with Purple Accent */}
         <section 
           id="skills" 
           className="h-screen w-full flex flex-col items-center justify-center snap-start p-6"
           style={{
-            background: "linear-gradient(105deg, #8bd2fd 0%, #e5deff 100%)"
+            background: "linear-gradient(105deg, #F1F0FB 0%, #E5DEFF 100%)"
           }}
         >
-          <h2 className="text-3xl font-extrabold font-montserrat text-[#0a2741] mb-10">Skills</h2>
+          <h2 className="text-3xl font-extrabold font-montserrat text-[#403E43] mb-10">Skills</h2>
           <div className="flex flex-wrap justify-center gap-4 max-w-xs">
             {skills.map((skill) => (
               <span
                 key={skill}
-                className="bg-white/60 text-[#3D405B] px-4 py-2 rounded-full text-sm font-semibold hover:bg-white/80 transition-colors duration-200 border border-[#a7d6f9]/40"
+                className="bg-white/60 text-[#403E43] px-4 py-2 rounded-full text-sm font-semibold hover:bg-white/80 transition-colors duration-200 border border-[#9B87F5]/40"
               >
                 {skill}
               </span>
@@ -146,18 +145,19 @@ export default function Resume() {
           </div>
         </section>
 
-        {/* Education Section */}
-        <section id="education" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6"
+        {/* Education Section - Soft Peach with Gray Accents */}
+        <section id="education" 
+          className="h-screen w-full flex flex-col items-center justify-center snap-start p-6"
           style={{
-            background: "linear-gradient(90deg, #ffdee1 0%, #e5deff 100%)"
+            background: "linear-gradient(90deg, #FDE1D3 0%, #F1F0FB 100%)"
           }}
         >
-          <h2 className="text-3xl font-extrabold font-montserrat text-[#4A356E] mb-8">Education</h2>
+          <h2 className="text-3xl font-extrabold font-montserrat text-[#403E43] mb-8">Education</h2>
           <div className="max-w-xs space-y-6">
-            <div className="bg-white/70 backdrop-blur-[2px] p-4 rounded-xl border border-[#f3a3b8]">
-              <h3 className="text-xl font-bold text-[#8e236e]">B-Tech (CS & System Engineering)</h3>
-              <p className="text-[#805b8c]/90">KIIT, Odisha (2020-2024)</p>
-              <p className="text-[#53416f] font-semibold">81.6%</p>
+            <div className="bg-white/70 backdrop-blur-[2px] p-4 rounded-xl border border-[#9B87F5]/40">
+              <h3 className="text-xl font-bold text-[#554E7B]">B-Tech (CS & System Engineering)</h3>
+              <p className="text-[#6E59A5]/90">KIIT, Odisha (2020-2024)</p>
+              <p className="text-[#403E43] font-semibold">81.6%</p>
             </div>
             <div className="bg-white/60 backdrop-blur-[2px] p-4 rounded-xl border border-[#dab5ff]">
               <h3 className="text-xl font-bold text-[#4a356e]">12th Board</h3>
@@ -187,19 +187,19 @@ export default function Resume() {
           </div>
         </section>
 
-        {/* Projects Section */}
+        {/* Projects Section - Soft Blue with Gray Accents */}
         <section id="projects" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6"
           style={{
-            background: "linear-gradient(93deg,#f9f8eb 0%, #e2eafb 85%)"
+            background: "linear-gradient(93deg, #D3E4FD 0%, #F1F0FB 85%)"
           }}
         >
-          <h2 className="text-3xl font-extrabold font-montserrat text-[#404050] mb-8">Projects</h2>
+          <h2 className="text-3xl font-extrabold font-montserrat text-[#403E43] mb-8">Projects</h2>
           <div className="max-w-xs space-y-6">
-            <div className="bg-[#6789ed]/10 backdrop-blur-[1px] p-4 rounded-xl border border-[#b1b4e1]/50">
-              <h3 className="text-xl font-bold text-[#21448e]">Sentiment Analysis on Twitter Data</h3>
-              <p className="text-[#21448e]/70">NLP project analyzing opinions from tweets</p>
+            <div className="bg-white/60 backdrop-blur-[1px] p-4 rounded-xl border border-[#9B87F5]/40">
+              <h3 className="text-xl font-bold text-[#554E7B]">Sentiment Analysis on Twitter Data</h3>
+              <p className="text-[#6E59A5]/70">NLP project analyzing opinions from tweets</p>
             </div>
-            <div className="bg-[#8de4cd]/10 backdrop-blur-[1px] p-4 rounded-xl border border-[#86e3ce]/50">
+            <div className="bg-white/60 backdrop-blur-[1px] p-4 rounded-xl border border-[#86e3ce]/50">
               <h3 className="text-xl font-bold text-[#187259]">Bangalore House Price Prediction</h3>
               <p className="text-[#187259]/70">ML regression model</p>
             </div>
@@ -221,16 +221,16 @@ export default function Resume() {
           </div>
         </section>
 
-        {/* Internships Section */}
+        {/* Internships Section - Soft Green with Gray Accents */}
         <section id="internships" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6"
           style={{
-            background: "linear-gradient(100deg,#fffbe8 0%, #e1eecf 100%)"
+            background: "linear-gradient(100deg, #F2FCE2 0%, #F1F0FB 100%)"
           }}
         >
-          <h2 className="text-3xl font-extrabold font-montserrat text-[#44342f] mb-8">Internships</h2>
+          <h2 className="text-3xl font-extrabold font-montserrat text-[#403E43] mb-8">Internships</h2>
           <div className="max-w-xs space-y-6">
-            <div className="bg-white/80 backdrop-blur-[1px] p-4 rounded-xl border border-[#FFF7AE]/50">
-              <h3 className="text-xl font-bold text-[#ca9342]">Marketing & Tech Support Intern</h3>
+            <div className="bg-white/80 backdrop-blur-[1px] p-4 rounded-xl border border-[#9B87F5]/40">
+              <h3 className="text-xl font-bold text-[#554E7B]">Marketing & Tech Support Intern</h3>
               <p className="text-[#44342f]/80">Semika Technology (May–June 2023)</p>
             </div>
             <div className="bg-white/80 backdrop-blur-[1px] p-4 rounded-xl border border-[#dfc4e7]/40">
@@ -255,20 +255,21 @@ export default function Resume() {
           </div>
         </section>
 
-        {/* Certifications Section */}
-        <section id="certifications" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6"
-                  style={{
-            background: "linear-gradient(70deg, #d5e8fa 0%, #fceaff 100%)"
+        {/* Certifications Section - Soft Yellow with Gray Accents */}
+        <section id="certifications" 
+          className="h-screen w-full flex flex-col items-center justify-center snap-start p-6"
+          style={{
+            background: "linear-gradient(70deg, #FEF7CD 0%, #F1F0FB 100%)"
           }}
         >
-          <h2 className="text-3xl font-extrabold font-montserrat text-[#373753] mb-8">Certifications</h2>
+          <h2 className="text-3xl font-extrabold font-montserrat text-[#403E43] mb-8">Certifications</h2>
           <div className="max-w-xs max-h-[60vh] overflow-y-auto px-2 space-y-4">
             {certifications.map((cert, index) => (
               <div 
                 key={index} 
-                className="bg-white/80 backdrop-blur-sm p-3 rounded-xl border border-[#e6e5fa]/60"
+                className="bg-white/80 backdrop-blur-sm p-3 rounded-xl border border-[#9B87F5]/40"
               >
-                <p className="text-[#554e7b] font-medium">{cert}</p>
+                <p className="text-[#554E7B] font-medium">{cert}</p>
               </div>
             ))}
           </div>
@@ -337,6 +338,3 @@ export default function Resume() {
     </div>
   );
 }
-
-// ⚠️ src/pages/Resume.tsx is getting long! 
-// For easier updates or new features, ask me to split it into reusable components.
