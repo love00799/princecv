@@ -49,7 +49,9 @@ export default function CertificationsSection({
         </div>
       </Section3DEffect>
 
-      <style jsx>{`
+      {/* Corrected: standard style tag */}
+      <style>
+        {`
         @keyframes slideIn {
           to {
             opacity: 1;
@@ -70,7 +72,8 @@ export default function CertificationsSection({
           background: rgba(155,135,245,0.5);
           border-radius: 10px;
         }
-      `}</style>
+        `}
+      </style>
 
       <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-8">
         <button 
@@ -89,3 +92,4 @@ export default function CertificationsSection({
     </section>
   );
 }
+

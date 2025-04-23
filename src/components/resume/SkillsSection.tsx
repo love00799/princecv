@@ -41,13 +41,16 @@ export default function SkillsSection({
         </div>
       </Section3DEffect>
 
-      <style jsx>{`
+      {/* Corrected: standard style tag */}
+      <style>
+        {`
         @keyframes float {
           0% { transform: translateY(0px); }
           50% { transform: translateY(-5px); }
           100% { transform: translateY(0px); }
         }
-      `}</style>
+        `}
+      </style>
 
       <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-8">
         <button 
@@ -66,3 +69,4 @@ export default function SkillsSection({
     </section>
   );
 }
+
