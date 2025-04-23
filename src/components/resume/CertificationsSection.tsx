@@ -1,5 +1,6 @@
 
 import { ChevronUp, ChevronDown } from "lucide-react";
+import Section3DEffect from "../Section3DEffect";
 
 const certifications = [
   "Neural Networks and Deep Learning",
@@ -25,17 +26,19 @@ export default function CertificationsSection({
         background: "linear-gradient(70deg, #FEF7CD 0%, #F1F0FB 100%)"
       }}
     >
-      <h2 className="text-3xl font-extrabold font-montserrat text-[#403E43] mb-8">Certifications</h2>
-      <div className="max-w-xs max-h-[60vh] overflow-y-auto px-2 space-y-4">
-        {certifications.map((cert, index) => (
-          <div 
-            key={index} 
-            className="bg-white/80 backdrop-blur-sm p-3 rounded-xl border border-[#9B87F5]/40"
-          >
-            <p className="text-[#554E7B] font-medium">{cert}</p>
-          </div>
-        ))}
-      </div>
+      <Section3DEffect className="max-w-xs w-full">
+        <h2 className="text-3xl font-extrabold font-montserrat text-[#403E43] mb-8">Certifications</h2>
+        <div className="max-w-xs max-h-[60vh] overflow-y-auto px-2 space-y-4">
+          {certifications.map((cert, index) => (
+            <div 
+              key={index} 
+              className="bg-white/80 backdrop-blur-sm p-3 rounded-xl border border-[#9B87F5]/40"
+            >
+              <p className="text-[#554E7B] font-medium">{cert}</p>
+            </div>
+          ))}
+        </div>
+      </Section3DEffect>
       <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-8">
         <button 
           onClick={scrollToPrevSection}
@@ -53,3 +56,4 @@ export default function CertificationsSection({
     </section>
   );
 }
+

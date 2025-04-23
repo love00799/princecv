@@ -1,6 +1,7 @@
 
 import SocialIcons from "@/components/SocialIcons";
 import { ChevronDown } from "lucide-react";
+import Section3DEffect from "../Section3DEffect";
 
 export default function ProfileSection({ scrollToNextSection }: { scrollToNextSection: () => void }) {
   return (
@@ -12,7 +13,7 @@ export default function ProfileSection({ scrollToNextSection }: { scrollToNextSe
       }}
     >
       <div className="absolute inset-0 bg-black/20 z-0"></div>
-      <div className="max-w-sm w-full flex flex-col items-center z-10">
+      <Section3DEffect className="max-w-sm w-full flex flex-col items-center z-10">
         <img
           src="/lovable-uploads/365c6999-af97-4e00-a7c4-c9eb8aa2cc4d.png"
           alt="Profile"
@@ -30,7 +31,7 @@ export default function ProfileSection({ scrollToNextSection }: { scrollToNextSe
         <div className="flex justify-center mt-2">
           <SocialIcons />
         </div>
-      </div>
+      </Section3DEffect>
       <div className="absolute bottom-10 left-0 right-0 flex justify-center">
         <button 
           onClick={scrollToNextSection}
