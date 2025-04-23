@@ -1,3 +1,4 @@
+
 import { useRef, useState } from "react";
 import SocialIcons from "../components/SocialIcons";
 import { ChevronUp, ChevronDown } from "lucide-react";
@@ -52,7 +53,7 @@ export default function Resume() {
   };
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden bg-shortsNeutral-900">
+    <div className="h-screen flex flex-col overflow-hidden bg-[#10121A]">
       {/* Audio controls */}
       <div className="absolute top-4 right-4 z-50">
         <BackgroundAudio />
@@ -74,22 +75,25 @@ export default function Resume() {
         {/* Profile Section */}
         <section 
           id="profile" 
-          className="h-screen w-full flex flex-col items-center justify-center snap-start relative bg-gradient-to-br from-shortsNeutral-800 via-shortsNeutral-900 to-shortsBlue-900 p-4"
+          className="h-screen w-full flex flex-col items-center justify-center snap-start relative"
+          style={{
+            background: "linear-gradient(90deg, #28243e 0%, #301e32 100%)"
+          }}
         >
-          <div className="absolute inset-0 bg-shortsNeutral-800 opacity-10 z-0"></div>
+          <div className="absolute inset-0 bg-black/20 z-0"></div>
           <div className="max-w-sm w-full flex flex-col items-center z-10">
             <img
               src="/lovable-uploads/365c6999-af97-4e00-a7c4-c9eb8aa2cc4d.png"
               alt="Profile"
-              className="w-28 h-28 rounded-full object-cover border-4 border-shortsNeutral-300 shadow-xl"
+              className="w-28 h-28 rounded-full object-cover border-4 border-[#CAC4F7] shadow-xl"
             />
-            <h1 className="text-4xl font-extrabold font-montserrat text-shortsWhite mt-4 drop-shadow-md">
+            <h1 className="text-4xl font-extrabold font-montserrat text-[#f4f2fb] mt-4 drop-shadow-md">
               Prince Kumar
             </h1>
-            <p className="text-lg font-semibold font-montserrat text-shortsNeutral-300 mb-2">
+            <p className="text-lg font-semibold font-montserrat text-[#CAC4F7] mb-2">
               Empowering Ideas with Code
             </p>
-            <p className="text-sm text-shortsNeutral-200 mb-4 text-center">
+            <p className="text-sm text-[#CAB8FF] mb-4 text-center">
               I&apos;m Prince Kumar, an ambitious software engineer passionate about turning ideas into digital realities. With expertise in programming, data, and creative problem-solving, I&apos;m eager to contribute and grow in the tech world.
             </p>
             <div className="flex justify-center mt-2">
@@ -99,9 +103,9 @@ export default function Resume() {
           <div className="absolute bottom-10 left-0 right-0 flex justify-center">
             <button 
               onClick={scrollToNextSection}
-              className="bg-shortsNeutral-700/30 hover:bg-shortsNeutral-700/50 p-2 rounded-full animate-bounce"
+              className="bg-[#1A1732]/80 hover:bg-[#1A1732] p-2 rounded-full animate-bounce"
             >
-              <ChevronDown className="text-shortsNeutral-300" />
+              <ChevronDown className="text-[#CAC4F7]" />
             </button>
           </div>
         </section>
@@ -109,14 +113,17 @@ export default function Resume() {
         {/* Skills Section */}
         <section 
           id="skills" 
-          className="h-screen w-full flex flex-col items-center justify-center snap-start p-6 bg-gradient-to-br from-shortsBlue-900 to-shortsNeutral-800"
+          className="h-screen w-full flex flex-col items-center justify-center snap-start p-6"
+          style={{
+            background: "linear-gradient(105deg, #8bd2fd 0%, #e5deff 100%)"
+          }}
         >
-          <h2 className="text-3xl font-extrabold font-montserrat text-shortsWhite mb-10">Skills</h2>
+          <h2 className="text-3xl font-extrabold font-montserrat text-[#0a2741] mb-10">Skills</h2>
           <div className="flex flex-wrap justify-center gap-4 max-w-xs">
             {skills.map((skill) => (
               <span
                 key={skill}
-                className="bg-shortsNeutral-700/30 text-shortsNeutral-200 px-4 py-2 rounded-full text-sm font-semibold hover:bg-shortsNeutral-700/50 transition-colors duration-200 border border-shortsNeutral-700/30"
+                className="bg-white/60 text-[#3D405B] px-4 py-2 rounded-full text-sm font-semibold hover:bg-white/80 transition-colors duration-200 border border-[#a7d6f9]/40"
               >
                 {skill}
               </span>
@@ -126,126 +133,142 @@ export default function Resume() {
           <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-8">
             <button 
               onClick={scrollToPrevSection}
-              className="bg-shortsNeutral-700/30 p-2 rounded-full"
+              className="bg-white/20 p-2 rounded-full"
             >
-              <ChevronUp className="text-shortsNeutral-300" />
+              <ChevronUp className="text-[#474A5B]" />
             </button>
             <button 
               onClick={scrollToNextSection}
-              className="bg-shortsNeutral-700/30 p-2 rounded-full animate-bounce"
+              className="bg-white/20 p-2 rounded-full animate-bounce"
             >
-              <ChevronDown className="text-shortsNeutral-300" />
+              <ChevronDown className="text-[#474A5B]" />
             </button>
           </div>
         </section>
 
         {/* Education Section */}
-        <section id="education" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6 bg-gradient-to-br from-shortsAccent to-shortsPurple">
-          <h2 className="text-3xl font-extrabold font-montserrat text-shortsWhite mb-8">Education</h2>
+        <section id="education" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6"
+          style={{
+            background: "linear-gradient(90deg, #ffdee1 0%, #e5deff 100%)"
+          }}
+        >
+          <h2 className="text-3xl font-extrabold font-montserrat text-[#4A356E] mb-8">Education</h2>
           <div className="max-w-xs space-y-6">
-            <div className="bg-shortsWhite/10 backdrop-blur-sm p-4 rounded-xl border border-shortsWhite/30">
-              <h3 className="text-xl font-bold text-shortsWhite">B-Tech (CS & System Engineering)</h3>
-              <p className="text-shortsWhite/80">KIIT, Odisha (2020-2024)</p>
-              <p className="text-shortsWhite font-semibold">81.6%</p>
+            <div className="bg-white/70 backdrop-blur-[2px] p-4 rounded-xl border border-[#f3a3b8]">
+              <h3 className="text-xl font-bold text-[#8e236e]">B-Tech (CS & System Engineering)</h3>
+              <p className="text-[#805b8c]/90">KIIT, Odisha (2020-2024)</p>
+              <p className="text-[#53416f] font-semibold">81.6%</p>
             </div>
-            <div className="bg-shortsWhite/10 backdrop-blur-sm p-4 rounded-xl border border-shortsWhite/30">
-              <h3 className="text-xl font-bold text-shortsWhite">12th Board</h3>
-              <p className="text-shortsWhite/80">M.R. Janta College, Bihar Board (2018-2020)</p>
-              <p className="text-shortsWhite font-semibold">62.8%</p>
+            <div className="bg-white/60 backdrop-blur-[2px] p-4 rounded-xl border border-[#dab5ff]">
+              <h3 className="text-xl font-bold text-[#4a356e]">12th Board</h3>
+              <p className="text-[#7f5da8]/80">M.R. Janta College, Bihar Board (2018-2020)</p>
+              <p className="text-[#6c4c93] font-semibold">62.8%</p>
             </div>
-            <div className="bg-shortsWhite/10 backdrop-blur-sm p-4 rounded-xl border border-shortsWhite/30">
-              <h3 className="text-xl font-bold text-shortsWhite">10th Board</h3>
-              <p className="text-shortsWhite/80">DAV Public School, CBSE (2015-2018)</p>
-              <p className="text-shortsWhite font-semibold">46.8%</p>
+            <div className="bg-white/60 backdrop-blur-[2px] p-4 rounded-xl border border-[#b2b4e0]">
+              <h3 className="text-xl font-bold text-[#474a5b]">10th Board</h3>
+              <p className="text-[#595b73]/80">DAV Public School, CBSE (2015-2018)</p>
+              <p className="text-[#474a5b] font-semibold">46.8%</p>
             </div>
           </div>
           
           <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-8">
             <button 
               onClick={scrollToPrevSection}
-              className="bg-shortsWhite/20 p-2 rounded-full"
+              className="bg-[#f3a3b8]/40 p-2 rounded-full"
             >
-              <ChevronUp className="text-shortsWhite" />
+              <ChevronUp className="text-[#8e236e]" />
             </button>
             <button 
               onClick={scrollToNextSection}
-              className="bg-shortsWhite/20 p-2 rounded-full animate-bounce"
+              className="bg-[#dab5ff]/60 p-2 rounded-full animate-bounce"
             >
-              <ChevronDown className="text-shortsWhite" />
+              <ChevronDown className="text-[#4a356e]" />
             </button>
           </div>
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6 bg-gradient-to-br from-shortsYellow to-shortsRed">
-          <h2 className="text-3xl font-extrabold font-montserrat text-shortsDark mb-8">Projects</h2>
+        <section id="projects" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6"
+          style={{
+            background: "linear-gradient(93deg,#f9f8eb 0%, #e2eafb 85%)"
+          }}
+        >
+          <h2 className="text-3xl font-extrabold font-montserrat text-[#404050] mb-8">Projects</h2>
           <div className="max-w-xs space-y-6">
-            <div className="bg-shortsDark/10 backdrop-blur-sm p-4 rounded-xl border border-shortsDark/30">
-              <h3 className="text-xl font-bold text-shortsDark">Sentiment Analysis on Twitter Data</h3>
-              <p className="text-shortsDark/80">NLP project analyzing opinions from tweets</p>
+            <div className="bg-[#6789ed]/10 backdrop-blur-[1px] p-4 rounded-xl border border-[#b1b4e1]/50">
+              <h3 className="text-xl font-bold text-[#21448e]">Sentiment Analysis on Twitter Data</h3>
+              <p className="text-[#21448e]/70">NLP project analyzing opinions from tweets</p>
             </div>
-            <div className="bg-shortsDark/10 backdrop-blur-sm p-4 rounded-xl border border-shortsDark/30">
-              <h3 className="text-xl font-bold text-shortsDark">Bangalore House Price Prediction</h3>
-              <p className="text-shortsDark/80">ML regression model</p>
+            <div className="bg-[#8de4cd]/10 backdrop-blur-[1px] p-4 rounded-xl border border-[#86e3ce]/50">
+              <h3 className="text-xl font-bold text-[#187259]">Bangalore House Price Prediction</h3>
+              <p className="text-[#187259]/70">ML regression model</p>
             </div>
           </div>
           
           <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-8">
             <button 
               onClick={scrollToPrevSection}
-              className="bg-shortsDark/20 p-2 rounded-full"
+              className="bg-[#b1b4e1]/40 p-2 rounded-full"
             >
-              <ChevronUp className="text-shortsDark" />
+              <ChevronUp className="text-[#21448e]" />
             </button>
             <button 
               onClick={scrollToNextSection}
-              className="bg-shortsDark/20 p-2 rounded-full animate-bounce"
+              className="bg-[#86e3ce]/40 p-2 rounded-full animate-bounce"
             >
-              <ChevronDown className="text-shortsDark" />
+              <ChevronDown className="text-[#187259]" />
             </button>
           </div>
         </section>
 
         {/* Internships Section */}
-        <section id="internships" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6 bg-gradient-to-br from-shortsAccent to-shortsYellow">
-          <h2 className="text-3xl font-extrabold font-montserrat text-shortsDark mb-8">Internships</h2>
+        <section id="internships" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6"
+          style={{
+            background: "linear-gradient(100deg,#fffbe8 0%, #e1eecf 100%)"
+          }}
+        >
+          <h2 className="text-3xl font-extrabold font-montserrat text-[#44342f] mb-8">Internships</h2>
           <div className="max-w-xs space-y-6">
-            <div className="bg-shortsDark/10 backdrop-blur-sm p-4 rounded-xl border border-shortsDark/30">
-              <h3 className="text-xl font-bold text-shortsDark">Marketing & Tech Support Intern</h3>
-              <p className="text-shortsDark/80">Semika Technology (May–June 2023)</p>
+            <div className="bg-white/80 backdrop-blur-[1px] p-4 rounded-xl border border-[#FFF7AE]/50">
+              <h3 className="text-xl font-bold text-[#ca9342]">Marketing & Tech Support Intern</h3>
+              <p className="text-[#44342f]/80">Semika Technology (May–June 2023)</p>
             </div>
-            <div className="bg-shortsDark/10 backdrop-blur-sm p-4 rounded-xl border border-shortsDark/30">
-              <h3 className="text-xl font-bold text-shortsDark">Sales & Marketing</h3>
-              <p className="text-shortsDark/80">Highradius (Aug–Sept 2023)</p>
+            <div className="bg-white/80 backdrop-blur-[1px] p-4 rounded-xl border border-[#dfc4e7]/40">
+              <h3 className="text-xl font-bold text-[#9367a6]">Sales & Marketing</h3>
+              <p className="text-[#44342f]/80">Highradius (Aug–Sept 2023)</p>
             </div>
           </div>
           
           <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-8">
             <button 
               onClick={scrollToPrevSection}
-              className="bg-shortsDark/20 p-2 rounded-full"
+              className="bg-[#FFF7AE]/40 p-2 rounded-full"
             >
-              <ChevronUp className="text-shortsDark" />
+              <ChevronUp className="text-[#ca9342]" />
             </button>
             <button 
               onClick={scrollToNextSection}
-              className="bg-shortsDark/20 p-2 rounded-full animate-bounce"
+              className="bg-[#dfc4e7]/40 p-2 rounded-full animate-bounce"
             >
-              <ChevronDown className="text-shortsDark" />
+              <ChevronDown className="text-[#9367a6]" />
             </button>
           </div>
         </section>
 
         {/* Certifications Section */}
-        <section id="certifications" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6 bg-gradient-to-br from-shortsPurple to-shortsAccent">
-          <h2 className="text-3xl font-extrabold font-montserrat text-shortsWhite mb-8">Certifications</h2>
+        <section id="certifications" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6"
+                  style={{
+            background: "linear-gradient(70deg, #d5e8fa 0%, #fceaff 100%)"
+          }}
+        >
+          <h2 className="text-3xl font-extrabold font-montserrat text-[#373753] mb-8">Certifications</h2>
           <div className="max-w-xs max-h-[60vh] overflow-y-auto px-2 space-y-4">
             {certifications.map((cert, index) => (
               <div 
                 key={index} 
-                className="bg-shortsWhite/10 backdrop-blur-sm p-3 rounded-xl border border-shortsWhite/30"
+                className="bg-white/80 backdrop-blur-sm p-3 rounded-xl border border-[#e6e5fa]/60"
               >
-                <p className="text-shortsWhite font-medium">{cert}</p>
+                <p className="text-[#554e7b] font-medium">{cert}</p>
               </div>
             ))}
           </div>
@@ -253,28 +276,32 @@ export default function Resume() {
           <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-8">
             <button 
               onClick={scrollToPrevSection}
-              className="bg-shortsWhite/20 p-2 rounded-full"
+              className="bg-[#e6e5fa]/80 p-2 rounded-full"
             >
-              <ChevronUp className="text-shortsWhite" />
+              <ChevronUp className="text-[#554e7b]" />
             </button>
             <button 
               onClick={scrollToNextSection}
-              className="bg-shortsWhite/20 p-2 rounded-full animate-bounce"
+              className="bg-[#ffe7fc]/80 p-2 rounded-full animate-bounce"
             >
-              <ChevronDown className="text-shortsWhite" />
+              <ChevronDown className="text-[#373753]" />
             </button>
           </div>
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6 bg-gradient-to-b from-shortsRed to-shortsDark">
-          <h2 className="text-3xl font-extrabold font-montserrat text-shortsWhite mb-8">Let's Connect!</h2>
-          <p className="text-shortsWhite/90 text-center max-w-xs mb-8">
+        <section id="contact" className="h-screen w-full flex flex-col items-center justify-center snap-start p-6"
+          style={{
+            background: "linear-gradient(120deg,#6e59a5 0%, #212437 100%)"
+          }}
+        >
+          <h2 className="text-3xl font-extrabold font-montserrat text-white mb-8">Let's Connect!</h2>
+          <p className="text-white/90 text-center max-w-xs mb-8">
             Ready to collaborate or have questions? Reach out using social links or drop me an email!
           </p>
           <a 
             href="mailto:ps1750322@gmail.com"
-            className="bg-shortsAccent text-shortsDark px-8 py-3 rounded-full font-bold uppercase font-montserrat text-lg tracking-widest shadow-lg hover:bg-shortsAccent/80 transition-all duration-300"
+            className="bg-[#f9cc90] text-[#212437] px-8 py-3 rounded-full font-bold uppercase font-montserrat text-lg tracking-widest shadow-lg hover:bg-[#ffe1a5] transition-all duration-300"
           >
             Contact Me
           </a>
@@ -285,9 +312,9 @@ export default function Resume() {
           <div className="absolute bottom-10 left-0 right-0 flex justify-center">
             <button 
               onClick={scrollToPrevSection}
-              className="bg-shortsWhite/20 p-2 rounded-full"
+              className="bg-[#f9cc90]/40 p-2 rounded-full"
             >
-              <ChevronUp className="text-shortsWhite" />
+              <ChevronUp className="text-[#ffe1a5]" />
             </button>
           </div>
         </section>
@@ -298,7 +325,7 @@ export default function Resume() {
         {sections.map((section, index) => (
           <div 
             key={index}
-            className={`w-2 h-2 rounded-full ${currentSection === index ? 'bg-shortsWhite' : 'bg-shortsNeutral-700'}`}
+            className={`w-2 h-2 rounded-full ${currentSection === index ? 'bg-white' : 'bg-[#d1d0e2]'}`}
             onClick={() => {
               const targetSection = document.getElementById(section.id);
               targetSection?.scrollIntoView({ behavior: "smooth" });
@@ -310,3 +337,6 @@ export default function Resume() {
     </div>
   );
 }
+
+// ⚠️ src/pages/Resume.tsx is getting long! 
+// For easier updates or new features, ask me to split it into reusable components.
